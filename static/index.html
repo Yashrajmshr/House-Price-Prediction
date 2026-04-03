@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Real Estate AI Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-mesh"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <i class="fa-solid fa-house-chimney-window"></i>
+                <h1><span class="gradient-text">Estate</span>AI</h1>
+            </div>
+            <p class="subtitle">B.Tech Major Project • Real-time Market Prediction via Ensemble Learning</p>
+        </header>
+
+        <main>
+            <div class="glass-card form-container">
+                <h2>Predict House Price</h2>
+                <form id="prediction-form">
+                    
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-city"></i> City</label>
+                            <select id="City" name="City" required>
+                                <option value="" disabled selected>Select City</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Bengaluru">Bengaluru</option>
+                                <option value="Delhi-NCR">Delhi-NCR</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Pune">Pune</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-map-location-dot"></i> Locality Tier</label>
+                            <select id="Locality_Tier" name="Locality_Tier" required>
+                                <option value="" disabled selected>Select Area Quality</option>
+                                <option value="Premium">Premium</option>
+                                <option value="Mid-segment">Mid-segment</option>
+                                <option value="Affordable">Affordable</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-building"></i> Property Type</label>
+                            <select id="Property_Type" name="Property_Type" required>
+                                <option value="" disabled selected>Select Type</option>
+                                <option value="Apartment">Apartment</option>
+                                <option value="Independent House">Independent House</option>
+                                <option value="Villa">Villa</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-couch"></i> Furnishing</label>
+                            <select id="Furnishing_Status" name="Furnishing_Status" required>
+                                <option value="" disabled selected>Select Furnishing</option>
+                                <option value="Furnished">Furnished</option>
+                                <option value="Semi-Furnished">Semi-Furnished</option>
+                                <option value="Unfurnished">Unfurnished</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-person-digging"></i> Status</label>
+                            <select id="Status" name="Status" required>
+                                <option value="" disabled selected>Select Status</option>
+                                <option value="Ready to move">Ready to move</option>
+                                <option value="Under Construction">Under Construction</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-bed"></i> BHK</label>
+                            <input type="number" id="BHK" name="BHK" min="1" max="10" placeholder="e.g. 2" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-ruler-combined"></i> Area (Sq Ft)</label>
+                            <input type="number" id="Area_SqFt" name="Area_SqFt" min="100" max="15000" placeholder="e.g. 1200" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-bath"></i> Bathrooms</label>
+                            <input type="number" id="Bathrooms" name="Bathrooms" min="1" max="10" placeholder="e.g. 2" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-regular fa-sun"></i> Balcony</label>
+                            <input type="number" id="Balcony" name="Balcony" min="0" max="5" placeholder="e.g. 1" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-clock-rotate-left"></i> Property Age (Years)</label>
+                            <input type="number" id="Age_of_Property" name="Age_of_Property" min="0" max="100" placeholder="e.g. 5" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="predict-btn">
+                        <span class="btn-text">Predict Market Value</span>
+                        <i class="fa-solid fa-microchip spinner hidden"></i>
+                    </button>
+                    
+                </form>
+            </div>
+
+            <div class="glass-card result-container hidden" id="result-box">
+                <h3>Estimated Model Valuation</h3>
+                <div class="price-reveal">
+                    <span id="predicted-price" class="gradient-text lg-text">₹ --</span>
+                </div>
+                <div class="accuracy-badge">
+                    <i class="fa-solid fa-check-circle"></i> Driven by XGBoost Engine
+                </div>
+                <button class="reset-btn" id="reset-btn">Calculate Another</button>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Developed for B.Tech Major Project by Yash</p>
+        </footer>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>
