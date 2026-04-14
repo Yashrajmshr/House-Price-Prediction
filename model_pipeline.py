@@ -56,8 +56,8 @@ def build_and_train_model():
     print(" MODEL EVALUATION METRICS")
     print("="*30)
     print(f"R2 Score: {r2*100:.2f}%")
-    print(f"MAE: ₹ {mae:.2f} Lakhs")
-    print(f"RMSE: ₹ {rmse:.2f} Lakhs")
+    print(f"MAE: Rs. {mae:.2f} Lakhs")
+    print(f"RMSE: Rs. {rmse:.2f} Lakhs")
     print("="*30 + "\n")
     
     model_path = os.path.join(os.path.dirname(__file__), 'model.pkl')
