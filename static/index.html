@@ -3,132 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indian Real Estate AI Predictor</title>
+    <title>EstateAI — Indian Real Estate Price Predictor</title>
+    <meta name="description" content="Get instant AI-powered house price predictions for Mumbai, Bengaluru, Delhi-NCR, Hyderabad, and Pune. Find similar properties with our smart recommendation engine.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="static/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="background-mesh"></div>
-    
-    <div class="container">
-        <header>
-            <div class="logo-container">
-                <i class="fa-solid fa-house-chimney-window"></i>
-                <h1><span class="gradient-text">Estate</span>AI</h1>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo" id="nav-logo-link">
+                <span class="logo-icon"><i class="fa-solid fa-house-chimney"></i></span>
+                <span class="logo-text">Estate<span class="logo-accent">AI</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="#" class="nav-link active">Predict</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
             </div>
-            <p class="subtitle">B.Tech Major Project • Real-time Market Prediction via Ensemble Learning</p>
-        </header>
+            <div class="nav-cta">
+                <span class="nav-badge"><i class="fa-solid fa-bolt"></i> AI Powered</span>
+            </div>
+        </div>
+    </nav>
 
-        <main>
-            <div class="glass-card form-container">
-                <h2>Predict House Price</h2>
-                <form id="prediction-form">
-                    
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tag"><i class="fa-solid fa-chart-line"></i> Real-time Market Insights</div>
+            <h1 class="hero-title">Find the Perfect <span class="accent">Property Price</span> in India</h1>
+            <p class="hero-subtitle">Powered by an XGBoost ensemble model trained on 50,000+ property transactions. Get instant valuations & similar listings.</p>
+            <div class="hero-stats">
+                <div class="stat-pill"><i class="fa-solid fa-city"></i> 5 Cities</div>
+                <div class="stat-pill"><i class="fa-solid fa-database"></i> 50K+ Records</div>
+                <div class="stat-pill"><i class="fa-solid fa-brain"></i> XGBoost Model</div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-card fc1"><i class="fa-solid fa-indian-rupee-sign"></i><span>2.4 Cr</span><small>Mumbai, Premium</small></div>
+            <div class="floating-card fc2"><i class="fa-solid fa-bed"></i><span>3 BHK Villa</span><small>Bengaluru</small></div>
+            <div class="floating-card fc3"><i class="fa-solid fa-arrow-trend-up"></i><span>+12.4%</span><small>YoY Growth</small></div>
+        </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+
+        <!-- ===== PREDICTION FORM ===== -->
+        <section class="form-section" id="predict-section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-sliders"></i> Configure Your Property</h2>
+                <p>Fill in the details below to get an accurate AI valuation</p>
+            </div>
+
+            <div class="form-card" id="form-card">
+                <form id="prediction-form" novalidate>
                     <div class="form-grid">
-                        <div class="input-group">
-                            <label><i class="fa-solid fa-city"></i> City</label>
-                            <select id="City" name="City" required>
-                                <option value="" disabled selected>Select City</option>
-                                <option value="Mumbai">Mumbai</option>
-                                <option value="Bengaluru">Bengaluru</option>
-                                <option value="Delhi-NCR">Delhi-NCR</option>
-                                <option value="Hyderabad">Hyderabad</option>
-                                <option value="Pune">Pune</option>
-                            </select>
+
+                        <div class="input-group" id="group-City">
+                            <label for="City"><i class="fa-solid fa-city"></i> City</label>
+                            <div class="select-wrapper">
+                                <select id="City" name="City" required>
+                                    <option value="" disabled selected>Select City</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Bengaluru">Bengaluru</option>
+                                    <option value="Delhi-NCR">Delhi-NCR</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Pune">Pune</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
                         </div>
 
-                        <div class="input-group">
-                            <label><i class="fa-solid fa-map-location-dot"></i> Locality Tier</label>
-                            <select id="Locality_Tier" name="Locality_Tier" required>
-                                <option value="" disabled selected>Select Area Quality</option>
-                                <option value="Premium">Premium</option>
-                                <option value="Mid-segment">Mid-segment</option>
-                                <option value="Affordable">Affordable</option>
-                            </select>
+                        <div class="input-group" id="group-Locality_Tier">
+                            <label for="Locality_Tier"><i class="fa-solid fa-map-location-dot"></i> Locality Tier</label>
+                            <div class="select-wrapper">
+                                <select id="Locality_Tier" name="Locality_Tier" required>
+                                    <option value="" disabled selected>Select Area Quality</option>
+                                    <option value="Premium">Premium</option>
+                                    <option value="Mid-segment">Mid-segment</option>
+                                    <option value="Affordable">Affordable</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
                         </div>
 
-                        <div class="input-group">
-                            <label><i class="fa-solid fa-building"></i> Property Type</label>
-                            <select id="Property_Type" name="Property_Type" required>
-                                <option value="" disabled selected>Select Type</option>
-                                <option value="Apartment">Apartment</option>
-                                <option value="Independent House">Independent House</option>
-                                <option value="Villa">Villa</option>
-                            </select>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label><i class="fa-solid fa-couch"></i> Furnishing</label>
-                            <select id="Furnishing_Status" name="Furnishing_Status" required>
-                                <option value="" disabled selected>Select Furnishing</option>
-                                <option value="Furnished">Furnished</option>
-                                <option value="Semi-Furnished">Semi-Furnished</option>
-                                <option value="Unfurnished">Unfurnished</option>
-                            </select>
+                        <div class="input-group" id="group-Property_Type">
+                            <label for="Property_Type"><i class="fa-solid fa-building"></i> Property Type</label>
+                            <div class="select-wrapper">
+                                <select id="Property_Type" name="Property_Type" required>
+                                    <option value="" disabled selected>Select Type</option>
+                                    <option value="Apartment">Apartment</option>
+                                    <option value="Independent House">Independent House</option>
+                                    <option value="Villa">Villa</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
                         </div>
 
-                        <div class="input-group">
-                            <label><i class="fa-solid fa-person-digging"></i> Status</label>
-                            <select id="Status" name="Status" required>
-                                <option value="" disabled selected>Select Status</option>
-                                <option value="Ready to move">Ready to move</option>
-                                <option value="Under Construction">Under Construction</option>
-                            </select>
+                        <div class="input-group" id="group-Furnishing_Status">
+                            <label for="Furnishing_Status"><i class="fa-solid fa-couch"></i> Furnishing</label>
+                            <div class="select-wrapper">
+                                <select id="Furnishing_Status" name="Furnishing_Status" required>
+                                    <option value="" disabled selected>Select Furnishing</option>
+                                    <option value="Furnished">Fully Furnished</option>
+                                    <option value="Semi-Furnished">Semi-Furnished</option>
+                                    <option value="Unfurnished">Unfurnished</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
                         </div>
 
-                        <div class="input-group">
-                            <label><i class="fa-solid fa-bed"></i> BHK</label>
+                        <div class="input-group" id="group-Status">
+                            <label for="Status"><i class="fa-solid fa-person-digging"></i> Status</label>
+                            <div class="select-wrapper">
+                                <select id="Status" name="Status" required>
+                                    <option value="" disabled selected>Select Status</option>
+                                    <option value="Ready to move">Ready to Move</option>
+                                    <option value="Under Construction">Under Construction</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="input-group" id="group-BHK">
+                            <label for="BHK"><i class="fa-solid fa-bed"></i> BHK</label>
                             <input type="number" id="BHK" name="BHK" min="1" max="10" placeholder="e.g. 2" required>
                         </div>
 
-                        <div class="input-group">
-                            <label><i class="fa-solid fa-ruler-combined"></i> Area (Sq Ft)</label>
+                        <div class="input-group" id="group-Area_SqFt">
+                            <label for="Area_SqFt"><i class="fa-solid fa-ruler-combined"></i> Area (Sq Ft)</label>
                             <input type="number" id="Area_SqFt" name="Area_SqFt" min="100" max="15000" placeholder="e.g. 1200" required>
                         </div>
 
-                        <div class="input-group">
-                            <label><i class="fa-solid fa-bath"></i> Bathrooms</label>
+                        <div class="input-group" id="group-Bathrooms">
+                            <label for="Bathrooms"><i class="fa-solid fa-bath"></i> Bathrooms</label>
                             <input type="number" id="Bathrooms" name="Bathrooms" min="1" max="10" placeholder="e.g. 2" required>
                         </div>
 
-                        <div class="input-group">
-                            <label><i class="fa-regular fa-sun"></i> Balcony</label>
+                        <div class="input-group" id="group-Balcony">
+                            <label for="Balcony"><i class="fa-regular fa-sun"></i> Balconies</label>
                             <input type="number" id="Balcony" name="Balcony" min="0" max="5" placeholder="e.g. 1" required>
                         </div>
 
-                        <div class="input-group">
-                            <label><i class="fa-solid fa-clock-rotate-left"></i> Property Age (Years)</label>
+                        <div class="input-group" id="group-Age_of_Property">
+                            <label for="Age_of_Property"><i class="fa-solid fa-clock-rotate-left"></i> Property Age (Years)</label>
                             <input type="number" id="Age_of_Property" name="Age_of_Property" min="0" max="100" placeholder="e.g. 5" required>
                         </div>
+
                     </div>
-                    
-                    <button type="submit" class="submit-btn" id="predict-btn">
-                        <span class="btn-text">Predict Market Value</span>
-                        <i class="fa-solid fa-microchip spinner hidden"></i>
+
+                    <button type="submit" class="predict-btn" id="predict-btn">
+                        <span class="btn-text"><i class="fa-solid fa-wand-magic-sparkles"></i> Predict Market Value</span>
+                        <span class="btn-loading hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> Analyzing Market...</span>
                     </button>
-                    
                 </form>
             </div>
+        </section>
 
-            <div class="glass-card result-container hidden" id="result-box">
-                <h3>Estimated Model Valuation</h3>
-                <div class="price-reveal">
-                    <span id="predicted-price" class="gradient-text lg-text">₹ --</span>
+        <!-- ===== RESULT SECTION ===== -->
+        <section class="result-section hidden" id="result-section">
+            <div class="result-card">
+                <div class="result-header">
+                    <div class="result-check"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <h3>AI Valuation Complete</h3>
+                        <p>Based on current market data & your inputs</p>
+                    </div>
                 </div>
-                <div class="accuracy-badge">
-                    <i class="fa-solid fa-check-circle"></i> Driven by XGBoost Engine
+                <div class="result-price-block">
+                    <span class="result-label">Estimated Market Value</span>
+                    <span class="result-price" id="predicted-price">₹ --</span>
+                    <span class="result-powered"><i class="fa-solid fa-microchip"></i> XGBoost Ensemble Model</span>
                 </div>
-                <button class="reset-btn" id="reset-btn">Calculate Another</button>
+                <div class="result-meta" id="result-meta"></div>
+                <button class="reset-btn" id="reset-btn"><i class="fa-solid fa-rotate-left"></i> Calculate Another</button>
             </div>
-        </main>
-        
-        <footer>
-            <p>Developed for B.Tech Major Project by Yash</p>
-        </footer>
-    </div>
+
+            <!-- ===== RECOMMENDATIONS SECTION ===== -->
+            <div class="recommendations-section" id="recommendations-section">
+                <div class="rec-header">
+                    <h2><i class="fa-solid fa-fire-flame-curved"></i> Similar Properties You Might Like</h2>
+                    <p>AI-matched listings from the same city and price range</p>
+                </div>
+                <div class="rec-grid" id="rec-grid">
+                    <!-- Cards injected by JS -->
+                </div>
+                <div class="rec-loading hidden" id="rec-loading">
+                    <div class="loader-dots"><span></span><span></span><span></span></div>
+                    <p>Finding similar properties...</p>
+                </div>
+                <div class="rec-empty hidden" id="rec-empty">
+                    <i class="fa-solid fa-house-crack"></i>
+                    <p>No similar properties found in this city.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOW IT WORKS ===== -->
+        <section class="how-it-works" id="how-it-works">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-gears"></i> How It Works</h2>
+                <p>Three simple steps to your property valuation</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <div class="step-icon"><i class="fa-solid fa-sliders"></i></div>
+                    <h4>Enter Property Details</h4>
+                    <p>Select city, property type, furnishing, area and other key attributes.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <div class="step-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h4>AI Analysis</h4>
+                    <p>Our XGBoost model trained on 50K+ records analyzes 10 feature vectors instantly.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <div class="step-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                    <h4>Get Valuation + Matches</h4>
+                    <p>Receive an instant price estimate plus 4 similar real properties to compare.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <i class="fa-solid fa-house-chimney"></i>
+                <span>Estate<span class="logo-accent">AI</span></span>
+            </div>
+            <p>B.Tech Major Project &mdash; Real Estate Price Prediction via Ensemble Learning</p>
+            <p class="footer-credit">Developed by <strong>Yashraj Mishra</strong> &bull; CS 2341211</p>
+        </div>
+    </footer>
 
     <script src="static/script.js"></script>
 </body>
